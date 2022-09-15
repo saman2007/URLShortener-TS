@@ -15,14 +15,47 @@
       referrerpolicy="no-referrer"
     />
   </head>
+  <div
+    class="fixed right-0 top-0 left-0 z-40 bottom-0 flex justify-center items-center pointer-events-none msg-modal-container"
+  ></div>
+  <div
+    class="top-0 modal opacity-0 pointer-events-none duration-500 transition left-0 right-0 bottom-0 fixed bg-[#8b7ff388] z-30 flex justify-center items-center"
+  >
+    <div
+      class="bg-white rounded-[10px] sm:w-[500px] w-[95%] min-h-[300px] flex flex-col justify-center p-[10px] items-center"
+    >
+      <h2 class="text-[25px] font-secondary mb-[15px]">
+        Your url is ready to use!
+      </h2>
+      <a
+        href="http://localhost:8080/3evfede"
+        class="border-2 generated-url border-dashed hover:bg-[#ffa38e] transition duration-200 font-secondary border-[#fa6746] p-[5px] rounded-[10px]"
+        >localhost:8080/3evfede</a
+      >
+      <div class="mt-[40px]">
+        <button
+          class="bg-[#f47c61] hover:bg-[#fa6746] transition duration-300 p-[10px] rounded-[10px] text-white modal-close-button"
+        >
+          Close
+        </button>
+        <button
+          class="bg-[#3269e4] copy-link hover:bg-[#2b58bb] transition duration-300 p-[10px] rounded-[10px] text-white"
+        >
+          Copy link
+        </button>
+      </div>
+    </div>
+  </div>
   <body class="w-full h-full bg-[#011747] relative flex flex-col">
-    <nav class="w-full z-10 mb-[30px] sm:min-h-[80px] flex justify-center items-center min-h-fit px-[20px] sm:py-0 py-[20px]">
+    <nav
+      class="w-full z-10 mb-[30px] sm:min-h-[80px] flex justify-center items-center min-h-fit px-[20px] sm:py-0 py-[20px]"
+    >
       <div
         class="w-full h-fit flex sm:flex-row flex-col justify-center sm:justify-between items-center"
       >
         <h1 class="text-white font-primary text-[40px]">
           <a class="inline-block w-full h-full text-center" href="/"
-            >URL Shortner</a
+            >URL Shortener</a
           >
         </h1>
         <a
@@ -86,19 +119,21 @@
         <form
           class="flex sm:flex-row items-center justify-center flex-col h-fit m-auto w-full"
         >
-          <input
-            type="text"
-            placeholder="enter your url here..."
-            class="flex-grow sm:mb-0 mb-[15px] px-[10px] py-[15px] w-full sm:max-w-[500px] outline-none font-secondary text-[18px] rounded-[15px]"
-          />
-          <div class="flex sm:ml-[15px] flex-shrink-0">
+          <div class="sm:max-w-[500px] url-inputs w-full flex flex-col">
+            <input
+              type="text"
+              placeholder="enter your url here..."
+              class="url-input px-[10px] py-[15px] w-full outline-none font-secondary text-[18px] rounded-[15px]"
+            />
+          </div>
+          <div class="flex sm:ml-[15px] flex-shrink-0 sm:mt-0 mt-[15px]">
             <button
-              class="min-w-[90px] px-[10px] text-white h-[55px] hover:bg-[#fa6746] transition duration-300 rounded-[10px] font-secondary text-[16px] bg-[#f47c61]"
+              class="min-w-[90px] random-url px-[10px] text-white h-[55px] hover:bg-[#fa6746] transition duration-300 rounded-[10px] font-secondary text-[16px] bg-[#f47c61]"
             >
               random URL
             </button>
             <button
-              class="min-w-[90px] px-[10px] text-white h-[55px] hover:bg-[#fa6746] transition duration-300 ml-[10px] rounded-[10px] font-secondary text-[16px] bg-[#f47c61]"
+              class="min-w-[90px] custom-url px-[10px] text-white h-[55px] hover:bg-[#fa6746] transition duration-300 ml-[10px] rounded-[10px] font-secondary text-[16px] bg-[#f47c61]"
             >
               custom URL
             </button>

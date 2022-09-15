@@ -21,6 +21,31 @@ module.exports = {
       directory: path.join(__dirname, "dist"),
     },
     compress: true,
+    proxy: {
+      "/**": {
+        //catch all requests
+        target: "/index.html", //default target
+        secure: false,
+        bypass: function (req, res, opt) {
+          //your custom code to check for any exceptions
+          //console.log('bypass check', {req: req, res:res, opt: opt});
+          if (
+            req.path.indexOf("/img/") !== -1 ||
+            req.path.indexOf("/public/") !== -1
+          ) {
+            return "/";
+          }
+
+          if (req.path.indexOf("/output.css") !== -1) {
+            return "/output.css";
+          }
+
+          if (req.headers.accept.indexOf("html") !== -1) {
+            return "/index.html";
+          } else return;
+        },
+      },
+    },
   },
   resolve: {
     extensions: [".ts", ".js", ".css"],
