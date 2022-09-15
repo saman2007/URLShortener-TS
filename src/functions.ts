@@ -36,6 +36,7 @@ const msgModalState = new Proxy(defaultMsgModalState, {
 
 const checkUrl = async (urlShortener: object) => {
   const errors = await validate(urlShortener);
+  
   const urlHasError = errors.find((data) => data.property === "url");
   const shortUrlHasError = errors.find((data) => data.property === "shortUrl");
 

@@ -11,7 +11,7 @@ export class URLShortener {
   }
 
   constructor(url: string, shortUrl: string | null = null) {
-    if (url.startsWith("htttp://") && url.startsWith("htttps://"))
+    if (url.startsWith("http://") || url.startsWith("https://"))
       this.url = url;
     else this.url = "http://" + url;
     if (shortUrl === null) {

@@ -36,8 +36,8 @@ module.exports = {
             return "/";
           }
 
-          if (req.path.indexOf("/output.css") !== -1) {
-            return "/output.css";
+          if (req.path.indexOf("/build.css") !== -1) {
+            return "/build.css";
           }
 
           if (req.headers.accept.indexOf("html") !== -1) {

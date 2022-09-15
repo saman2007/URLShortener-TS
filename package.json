@@ -18,7 +18,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server",
-    "tailwind": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+    "tailwind": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "webpack --config webpack.config.production.js"
   },
   "author": "",
   "license": "ISC"
