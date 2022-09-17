@@ -4,6 +4,7 @@ export class URLShortener {
   @IsUrl()
   url = "";
   @IsNotEmpty()
+  @IsUrl()
   shortUrl = "";
 
   generateRandomUrl() {

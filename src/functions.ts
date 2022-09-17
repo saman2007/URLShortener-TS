@@ -34,13 +34,15 @@ const msgModalState = new Proxy(defaultMsgModalState, {
   },
 });
 
-const checkUrl = async (urlShortener: object) => {
+const checkUrl = async (urlShortener: URLShortener) => {
   const errors = await validate(urlShortener);
   
   const urlHasError = errors.find((data) => data.property === "url");
-  const shortUrlHasError = errors.find((data) => data.property === "shortUrl");
+  const shortUrlHasError = errors.find((data) => data.property === "shortUrl" && !!data.constraints?.isNotEmpty);
+  const shortUrlIsNotUrl = errors.find((data) => data.property === "shortUrl" && !!data.constraints?.isUrl);
+  const shortUrlContainsSlash = urlShortener.shortUrl.includes("/") || urlShortener.shortUrl.includes("\\")
 
-  if (!urlHasError && !shortUrlHasError) {
+  if (!urlHasError && !shortUrlHasError && shortUrlIsNotUrl && !shortUrlContainsSlash) {
     return true;
   } else if (urlHasError && shortUrlHasError) {
     msgModalState.msg =
@@ -49,6 +51,8 @@ const checkUrl = async (urlShortener: object) => {
     msgModalState.msg = "please enter a correct and valid URL!";
   } else if (shortUrlHasError) {
     msgModalState.msg = "please enter a short url!";
+  } else if(!shortUrlIsNotUrl || shortUrlContainsSlash) {
+    msgModalState.msg = "short form of url shouldnt be a url and shouldnt contain '/' and '\\' !";
   }
 
   msgModalState.type = "error";
